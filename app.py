@@ -39,18 +39,17 @@ def main():# Read the image file
         "Opzioni",
         ("Pulizia dati", "EDA","Analisi","Report")
         )
-
-        with st.spinner("Loading..."):
-              time.sleep(5)
-        st.success("Done!")
-
+    if csv is not None:
+        df=pd.read_csv(csv)
+        
+    if add_radio=="Pulizia dati":
+        st.write('soocs')
 
 
     
 
 
-    if csv is not None:
-        df=pd.read_csv(csv)
+
    
     
         #DATA DISPLAY
