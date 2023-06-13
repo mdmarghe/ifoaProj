@@ -2,22 +2,53 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from numpy import dtype
+import time
+
+def add_bg_from_url():
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://img.freepik.com/premium-photo/banner-starry-outer-space-background-texture_78899-4532.jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
 
 
 
-def main():
+
+
+def main():# Read the image file
+    add_bg_from_url()
+
     
     #TEXT DISPLAY
     
-    st.title('titolo')
-    st.header('analisi dati')
-    st.subheader('basta un click')
-    st.code('nessuno fa tutto da solo')
-    st.write("descrizione")
-    st.markdown('_Markdown_')
-    st.caption('lol')
-    st.write('lol')
+    st.title(':red[Benvenuto nel mio sito]')
+    st.header(':red[analizza i tuoi dati]')
+    st.subheader(':orange[basta un click]')
+    
+    st.write("nessuno fa tutto da solo")
     csv=st.file_uploader("drag your file here")
+    with st.sidebar:
+        add_radio = st.radio(
+        "Opzioni",
+        ("Pulizia dati", "EDA","Analisi","Report")
+        )
+
+        with st.spinner("Loading..."):
+              time.sleep(5)
+        st.success("Done!")
+
+
+
+    
+
+
     if csv is not None:
         df=pd.read_csv(csv)
    
