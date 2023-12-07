@@ -4,12 +4,12 @@ import numpy as np
 from numpy import dtype
 import time
 
-def add_bg_from_url():
+def add_bg_from_url():    #background
     st.markdown(
          f"""
          <style>
          .stApp {{
-             background-image: url("https://img.freepik.com/premium-photo/banner-starry-outer-space-background-texture_78899-4532.jpg");
+             background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/83/Solid_white_bordered.svg");
              background-attachment: fixed;
              background-size: cover
          }}
@@ -28,37 +28,22 @@ def main():# Read the image file
     
     #TEXT DISPLAY
     
-    st.title(':red[Benvenuto nel mio sito]')
-    st.header(':red[analizza i tuoi dati]')
-    st.subheader(':orange[basta un click]')
-    
-    st.write("nessuno fa tutto da solo")
-    csv=st.file_uploader("drag your file here")
+    st.title('Benvenuti nel mio sito')
+    st.header('Margherita Nuccio')
+
     with st.sidebar:
         add_radio = st.radio(
         "Opzioni",
-        ("Pulizia dati", "EDA","Analisi","Report")
+        ("Machine Learning", "Deep Learning","Generative Art", "Amavinos")
         )
-    if csv is not None:
-        df=pd.read_csv(csv)
+    
+    if add_radio=="Amavinos":
+        st.write("progetto stage")
+
         
     if add_radio=="Pulizia dati":
-        st.write('soocs')
+        st.write('ehehehehhehe')
 
-
-    
-
-
-
-   
-    
-        #DATA DISPLAY
-    
-        st.dataframe(df)
-        #st.table(df.iloc[:,10])
-        #st.json({1:'b'})
-        #st.metric()
-    
         #TARGET SELECTION
         headers=df.columns.to_list()
         target=st.selectbox("select target", headers, index=0, 
