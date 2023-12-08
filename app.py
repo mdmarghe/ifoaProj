@@ -7,19 +7,22 @@ import time
 from NLP import main as  NLP
 from machineLearning import main as ml
 
-def add_bg_from_url():    #background
+def add_bg_from_url(): 
+      
     st.markdown(
          f"""
          <style>
          .stApp {{
-             background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/83/Solid_white_bordered.svg");
+             background-color: #800020;
              background-attachment: fixed;
              background-size: cover
+             text_color: "white"
          }}
          </style>
          """,
          unsafe_allow_html=True
      )
+
 
 
 
