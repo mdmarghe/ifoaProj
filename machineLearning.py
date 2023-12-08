@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import seaborn as sns
+import joblib
 def background():
     st.markdown(
     """
@@ -37,6 +38,10 @@ def main():
         st.subheader("acido citrico e qualità")
 
     st.image("data/corrML.png")
+    st.title("prediciamo vini")
+
+    model = joblib.load("wine_model")
+    
 
 if __name__ == "__main__":
     main()
