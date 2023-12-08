@@ -4,7 +4,8 @@ import numpy as np
 from numpy import dtype
 from tensorflow import keras
 import time
-from deepLearning import main as  dl
+from NLP import main as  NLP
+from machineLearning import main as ml
 
 def add_bg_from_url():    #background
     st.markdown(
@@ -36,15 +37,18 @@ def main():# Read the image file
     with st.sidebar:
         add_radio = st.radio(
         "Opzioni",
-        ("Machine Learning", "Deep Learning","Generative Art", "Amavinos")
+        ("Machine Learning", "Natural Language Processing" , "Amavinos", "Generative Art")
         )
     
     if add_radio=="Amavinos":
         st.write("progetto stage")
 
+    if add_radio=="Machine Learning":
+        ml()
+
         
-    if add_radio=="Deep Learning":
-        dl()
+    if add_radio=="Natural Language Processing":
+        NLP()
         
     if add_radio=="Pulizia dati":
         st.write('ehehehehhehe')
