@@ -2,7 +2,9 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from numpy import dtype
+from tensorflow import keras
 import time
+from deepLearning import main as  dl
 
 def add_bg_from_url():    #background
     st.markdown(
@@ -40,6 +42,9 @@ def main():# Read the image file
     if add_radio=="Amavinos":
         st.write("progetto stage")
 
+        
+    if add_radio=="Deep Learning":
+        dl()
         
     if add_radio=="Pulizia dati":
         st.write('ehehehehhehe')
