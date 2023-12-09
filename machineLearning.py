@@ -47,8 +47,9 @@ def main():
     "min": {},
     "max": {},
     "mean": {},}
-    
-    for label in wine_dataset.columns:
+    input_wine=[]
+
+    for label in wine_dataset.columns[:-1]:
         # Access the column using square brackets
         df = wine_dataset[label]
         
@@ -56,5 +57,25 @@ def main():
         data["min"][label] = df.min()
         data["max"][label] = df.max()
         data["mean"][label] = df.mean()
+        selected_value = st.slider(label, float(df.min()), float(df.max()), float(df.mean()))
+        input_wine.append(selected_value)
+
+
+    #Ora facciamo il test
+    input_wine_array=np.asarray(input_wine)
+    input_wine_reshaped=input_wine_array.reshape(1,-1)
+    prediction=model.predict(input_wine_reshaped)
+
+    if(prediction[0] == 0):
+        st.text("Poor Quality Wine.")
+        
+    else:
+        st.text("Good Quality Wine.")
+        st.balloons()
+    
+
+
+
+
 if __name__ == "__main__":
     main()
