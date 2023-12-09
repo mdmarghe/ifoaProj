@@ -41,7 +41,20 @@ def main():
     st.title("prediciamo vini")
 
     model = joblib.load("wine_model")
+    #prediction = model.predict(input_data_reshaped)
+    #metti slide bars
+    data = {
+    "min": {},
+    "max": {},
+    "mean": {},}
     
-
+    for label in wine_dataset.columns:
+        # Access the column using square brackets
+        df = wine_dataset[label]
+        
+        # Populate data dictionary
+        data["min"][label] = df.min()
+        data["max"][label] = df.max()
+        data["mean"][label] = df.mean()
 if __name__ == "__main__":
     main()
