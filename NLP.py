@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import joblib
 
 
 def show_footer():
@@ -8,10 +9,13 @@ def show_footer():
 
 def main():
     st.button("Re-run")
-    st.title("Welcome page1")
+    st.title("Natural Language Processing")
     st.markdown("***")
+    user_input = st.text_input("Metti qui la una recensione", "")
+    model=joblib.load("models/nlp_modelGradient Boosting")
+    pred_sentiment = model.predict(user_input)
+    
 
-    ###### footer #####################################
     show_footer()
 
 if __name__ == "__main__":
