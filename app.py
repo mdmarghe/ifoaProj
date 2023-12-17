@@ -6,6 +6,7 @@ from tensorflow import keras
 import time
 from NLP import main as  NLP
 from machineLearning import main as ml
+from amavinos import main as amavinos
 
 def background():
     st.markdown(
@@ -39,11 +40,11 @@ def main():# Read the image file
     with st.sidebar:
         add_radio = st.radio(
         "Opzioni",
-        ("Machine Learning", "Natural Language Processing" , "Amavinos", "Generative Art")
+        ("Machine Learning", "Natural Language Processing" , "Amavinos")
         )
     
     if add_radio=="Amavinos":
-        st.write("progetto stage")
+        amavinos()
 
     if add_radio=="Machine Learning":
         ml()
@@ -51,18 +52,7 @@ def main():# Read the image file
         
     if add_radio=="Natural Language Processing":
         NLP()
-        
-    if add_radio=="Pulizia dati":
-        st.write('ehehehehhehe')
-        
-        st.subheader("Analysis type")
-        model_type  =st.selectbox("select model type", {'linear regression':1, 'logistic regression':2}, index=0, 
-                key=None, help=None, on_change=None, 
-                args=None, kwargs=None, disabled=False)
-        st.write(model_type)
-        
-        
-        
+
             
                 
         
