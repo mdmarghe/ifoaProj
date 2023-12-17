@@ -7,21 +7,20 @@ import time
 from NLP import main as  NLP
 from machineLearning import main as ml
 
-def add_bg_from_url(): 
-      
+def background():
     st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background-color: #800020;
-             background-attachment: fixed;
-             background-size: cover
-             text_color: "white"
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
+    """
+    <style>
+    .reportview-container {
+        background-color:#800020
+    }
+   .sidebar .sidebar-content {
+        background: #800021
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
 
@@ -29,7 +28,7 @@ def add_bg_from_url():
 
 
 def main():# Read the image file
-    add_bg_from_url()
+    background()
 
     
     #TEXT DISPLAY

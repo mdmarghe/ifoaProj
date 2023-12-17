@@ -1,22 +1,17 @@
 import numpy as np
 import pandas as pd
-import streamlit as st
+import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 import joblib
-def background():
-    st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background-color:#800020
-    }
-   .sidebar .sidebar-content {
-        background: #800021
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+from mpl_toolkits.mplot3d import Axes3D
+import plotly.express as px
+import streamlit as st
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
     
 def main():
     
@@ -38,9 +33,11 @@ def main():
         st.subheader("acido citrico e qualità")
 
     st.image("data/corrML.png")
+###### 
+    
     st.title("prediciamo vini")
-
-    model = joblib.load("wine_model")
+    myPca=joblib.load("models/PCA.pkl")
+    model = joblib.load("models/wine_model.pkl")
     #prediction = model.predict(input_data_reshaped)
     #metti slide bars
     data = {
@@ -61,10 +58,13 @@ def main():
         input_wine.append(selected_value)
 
 
-    #Ora facciamo il test
-    input_wine_array=np.asarray(input_wine)
-    input_wine_reshaped=input_wine_array.reshape(1,-1)
-    prediction=model.predict(input_wine_reshaped)
+    input_wine_array = np.array(input_wine)
+    input_wine_2d = input_wine_array.reshape(1, -1)
+
+    trans = myPca.transform(input_wine_2d)
+    st.write(trans)
+
+    prediction = model.predict(trans)
 
     if(prediction[0] == 0):
         st.text("Poor Quality Wine.")
