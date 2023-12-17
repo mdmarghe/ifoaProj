@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import joblib
-from mpl_toolkits.mplot3d import Axes3D
 import plotly.express as px
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
