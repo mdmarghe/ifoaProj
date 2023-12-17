@@ -17,6 +17,7 @@ def main():
     
     wine_dataset = pd.read_csv("data/winequality-red.csv")
     st.dataframe(wine_dataset)
+    
 
     col1, col2, col3 = st.columns(3)
 
